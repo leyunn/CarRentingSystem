@@ -1,6 +1,6 @@
 # Installation Tutorial
 
-### 如何跑 backend_A
+### 如何使用
 
 ##### 安裝
 
@@ -22,14 +22,6 @@
 
 在前端送出 `http://localhost:8080/[API路徑]` 即可使用。
 
-Example:
-
-```
-http://localhost:8080/account/info/1 //取得id為1的使用者的資訊
-```
-
-
-
 ### 產生 Token
 
 > 這個Token可以重複使用，可以上傳、下載任何你有權限的Repositry
@@ -46,63 +38,5 @@ http://localhost:8080/account/info/1 //取得id為1的使用者的資訊
 照著Github上的教學，除了這行的地方中間要加入你的Token：
 
 ```
-git remote add origin https://[你的Token]@github.com/oop-finalproject-group4/[你的repo名稱].git
-```
-
-
-
-### API
-
-#### POST /account/login
-登入
-
-request:
-```jsonld
-{
-    "username": String,
-    "password": String[6:]
-}
-```
-response:
-```jsonld
-200 {"userid": int}
-404 {"error": "user not found"}
-401 {"error": "authentication failed"}
-415 {"error": "format error"}
-```
-
-#### POST /account/signup
-註冊
-＊請在前端提醒/註明（如下面說明 e.g. cardnumber長度、email格式等），如果不符合後端只會回傳format error
-
-request:
-```jsonld
-{
-    "username": String,
-    "password": String[6:],
-    "cardNumber": String[16], 
-    "safeNumber": String[3],
-    "phoneNumber": String[10],
-    "email": String(*@*.*),
-}
-```
-response:
-```jsonld
-200 {}
-409 {"error": "user exist"}
-415 {"error": "format error"}
-```
-#### GET /account/info/:userid
-回傳某個使用者的帳號資訊
-
-response:
-```jsonld
-200 {
-    "username": String,
-    "cardNumber": String[16], 
-    "safeNumber": String[3],
-    "phoneNumber": String[8:],
-    "email": String(*@*.*),
-}
-404 {"error": "user does not exist"}
+git remote add origin https://[你的Token]@github.com/[你的repo路徑]
 ```

@@ -52,6 +52,14 @@ public class CarService {
 
     public void charge(Car car){
         car.setPower(100);
+        //move to random spot
+        try{
+            Double[] newLocation = distance.generate(car.getLat(), car.getLng());
+            car.setLat(newLocation[0]);
+            car.setLng(newLocation[1]);
+        }catch (Exception e){
+            //ignore
+        }
         carRepo.save(car);
     }
 
